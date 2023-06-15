@@ -1,0 +1,79 @@
+definitions:
+  entity.Order:
+    properties:
+      buyerAddress:
+        type: string
+      buyerEmail:
+        type: string
+      id:
+        type: integer
+      orderDate:
+        type: string
+      product:
+        $ref: '#/definitions/entity.Product'
+      productId:
+        type: integer
+    type: object
+  entity.Product:
+    properties:
+      description:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      price:
+        type: integer
+    type: object
+host: localhost:8000
+info:
+  contact: {}
+  description: Dokumentasi REST API
+  title: Trial Class Mini Ecommerce
+  version: "0.1"
+paths:
+  /orders:
+    get:
+      description: Get list of all orders
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/entity.Order'
+            type: array
+      summary: Get Orders
+      tags:
+      - Orders
+    post:
+      description: Create new orders
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/entity.Order'
+            type: array
+      summary: Post Orders
+      tags:
+      - Orders
+  /products:
+    get:
+      description: Get list of all available Products
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/entity.Product'
+            type: array
+      summary: Get Product
+      tags:
+      - Product
+swagger: "2.0"
